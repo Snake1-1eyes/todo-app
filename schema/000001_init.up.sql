@@ -11,7 +11,7 @@ CREATE TABLE todo_lists (
 );
 CREATE TABLE users_lists (
     id SERIAL NOT NULL UNIQUE,
-    users_id int REFERENCES users(id) on delete cascade NOT NULL,
+    user_id int REFERENCES users(id) on delete cascade NOT NULL,
     list_id int REFERENCES todo_lists(id) on delete cascade NOT NULL
 );
 CREATE TABLE todo_items (
