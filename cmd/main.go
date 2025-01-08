@@ -16,6 +16,17 @@ import (
 	"github.com/subosito/gotenv"
 )
 
+// @title           Todo App API
+// @version         1.0
+// @description     API server for TodoList App.
+
+// @host      localhost:8080
+// @BasePath  /
+
+// @securityDefinitions.apikey  ApiKeyAuth
+// @in header
+// @name Authorization
+
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {
