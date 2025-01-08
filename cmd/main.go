@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"os"
 	"os/signal"
 	"syscall"
@@ -55,6 +56,14 @@ func main() {
 	<-quit
 
 	logrus.Print("TodoApp Shutting Down")
+	if err := srv.Shutdown(context.Background()); err != nil {
+		logrus.Errorf("Error occured on server shutting down: %s", err.Error())
+	}
+
+	if err := db.Close(); err != nil {
+		logrus.Errorf("Error occured on db connection close: %s", err.Error())
+	}
+
 }
 
 func initConfig() error {
